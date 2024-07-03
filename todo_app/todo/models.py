@@ -7,4 +7,4 @@ class Problem(models.Model):
     status = models.CharField(max_length=6, choices={'UDN': 'Undone', 
                                                      'DN': 'Done'})
     created_at = models.DateTimeField(auto_now_add=True)
-    
+
