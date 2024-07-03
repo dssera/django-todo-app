@@ -4,7 +4,14 @@ from django.db import models
 
 class Problem(models.Model):
     title = models.CharField(max_length=200)
-    status = models.CharField(max_length=6, choices={'UDN': 'Undone', 
-                                                     'DN': 'Done'})
+    status = models.CharField(max_length=6, 
+                              choices={'UDN': 'Undone', 
+                                        'DN': 'Done'})
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return self.title
+    
+    class Meta:
+        ordering = ['-created_at']
 
