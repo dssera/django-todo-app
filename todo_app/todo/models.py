@@ -9,6 +9,13 @@ class Problem(models.Model):
                                         'DN': 'Done'})
     created_at = models.DateTimeField(auto_now_add=True)
 
+    def reverse_and_save(self):
+        if self.status == 'UDN':
+            self.status = 'DN'
+        else:
+            self.status = 'UDN'
+        self.save()
+
     def __str__(self) -> str:
         return self.title
     

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Problems</title>
+</head>
+<body>
+    <h1>Hi, this is the page with your problems</h1>
+    <div class="add-problem">
+        <form action="add/" method="POST">
+            {% csrf_token %}
+            <label for="title">Enter title</label>
+            <br>
+            <input type="text" name="title" required>
+            <br>
+            <input type="submit" value="add">
+        </form>
+    </div>
+    {% for el in problems %}
+    <div>
+        <p>{{el.title}}</p>
+        <form action="" method="POST" target="_self">
+            {% csrf_token %}
+            <input type="submit" value="{% if  el.status == 'UDN'%}Done{% else %}Undone{% endif %} ">
+            <input type="hidden" name="id" value="{{el.id}}">
+            {{el.id}}
+        </form>
+        <form action="delete/" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="id" value="{{el.id}}">
+            <input type="submit" value="del">
+        </form>
+    </div>
+    {% endfor %}
+    
+</body>
+</html>

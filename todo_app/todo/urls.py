@@ -5,5 +5,7 @@ from django.http import HttpResponse
 from . import views
 
 urlpatterns = [
-    path('', views.say_hello_view)
+    path('', views.index_view),
+    path('add/', views.create_problem),
+    path('delete/', views.delete_problem)
 ]
