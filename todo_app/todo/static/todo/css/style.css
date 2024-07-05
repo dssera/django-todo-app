@@ -1,0 +1,74 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+}
+input {
+    font-size: 18px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.add-problem {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.add-problem input[type="text"] {
+    padding: 5px;
+    width: 200px;
+    border: 1px solid #ccc;
+}
+
+.add-problem input[type="submit"] {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+div:not(.add-problem) {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+div p {
+    margin: 0;
+    padding: 0;
+}
+
+div form {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+div form input[type="submit"] {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+div form input[type="hidden"] {
+    display: none;
+}
+
+.problems-list {
+    max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}

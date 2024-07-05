@@ -17,13 +17,11 @@ def index_view(request: HttpRequest):
         problem_on_update = Problem.objects.get(id=request.POST.get('id', None))
         problem_on_update.reverse_and_save()
         return render(request, 'todo/index.html', {'problems': problems})
-    
 
 def create_problem(request: HttpRequest):
     if request.method == 'POST':
         problem = Problem()
         problem.title = request.POST.get('title')
-        problem.status = 'UDN'
         problem.save()
     return HttpResponseRedirect('/')
 

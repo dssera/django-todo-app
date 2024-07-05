@@ -3,10 +3,13 @@ from django.db import models
 # Create your models here.
 
 class Problem(models.Model):
+    STATUSES = (('UDN', 'Undone'),
+                ('DN', 'Done'))
+
     title = models.CharField(max_length=200)
     status = models.CharField(max_length=6, 
-                              choices={'UDN': 'Undone', 
-                                        'DN': 'Done'})
+                              choices=STATUSES,
+                                default=STATUSES[0])
     created_at = models.DateTimeField(auto_now_add=True)
 
     def reverse_and_save(self):
