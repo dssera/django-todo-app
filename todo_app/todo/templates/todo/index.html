@@ -32,7 +32,6 @@
             {% csrf_token %}
             <input type="submit" value="{% if  el.status == 'UDN'%}Done{% else %}Undone{% endif %} ">
             <input type="hidden" name="id" value="{{el.id}}">
-            {{el.id}}
         </form>
         <form action="{% url 'todo:delete' %}" method="POST">
             {% csrf_token %}
