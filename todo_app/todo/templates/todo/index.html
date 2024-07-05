@@ -12,7 +12,11 @@
     <h1>Hi, this is the page with your problems</h1>
 
     <div class="add-problem">
-        <form action="add/" method="POST">
+        <!-- 
+        action='add/' is bad because it's hardcoded 
+        use url tag instead
+        -->
+        <form action="{% url 'todo:add' %}" method="POST">
             {% csrf_token %}
             <label for="title">Enter title</label>
             <br>
@@ -30,7 +34,7 @@
             <input type="hidden" name="id" value="{{el.id}}">
             {{el.id}}
         </form>
-        <form action="delete/" method="POST">
+        <form action="{% url 'todo:delete' %}" method="POST">
             {% csrf_token %}
             <input type="hidden" name="id" value="{{el.id}}">
             <input type="submit" value="del">

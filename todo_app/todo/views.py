@@ -1,5 +1,6 @@
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect, HttpResponseNotFound
-from django.shortcuts import render
+from django.template import loader
+from django.shortcuts import redirect, render
 
 from .models import Problem
 
@@ -8,15 +9,17 @@ def say_hello_view(request):
 
 
 def index_view(request: HttpRequest):
-    print(request.POST.get('id', None))
     if request.method == "GET":
         problems = Problem.objects.all()
-        return render(request, 'todo/index.html', {'problems': problems})
-    elif request.method == "POST":
-        problems = Problem.objects.all()
-        problem_on_update = Problem.objects.get(id=request.POST.get('id', None))
-        problem_on_update.reverse_and_save()
-        return render(request, 'todo/index.html', {'problems': problems})
+        template = loader.get_template('todo/index.html')
+        return HttpResponse(template.render({'problems': problems}, request))
+        # these 2 strings can be replace on render from django.shortcuts
+    if request.method == "POST":
+        id = request.POST.get('id')
+        if id:
+            problem_on_update = Problem.objects.get(id=id)
+            problem_on_update.reverse_and_save()
+        return redirect('/')
 
 def create_problem(request: HttpRequest):
     if request.method == 'POST':

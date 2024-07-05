@@ -19,9 +19,15 @@ class Problem(models.Model):
             self.status = 'UDN'
         self.save()
 
+    def get_absolute_url(self):
+        pass
+
+    class Meta:
+        ordering = ['-created_at']
+
     def __str__(self) -> str:
         return self.title
     
-    class Meta:
-        ordering = ['-created_at']
+
+    
 
